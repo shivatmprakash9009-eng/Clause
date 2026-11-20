@@ -1,0 +1,23 @@
+import { chromium } from 'playwright';
+import AxeBuilder from '@axe-core/playwright';
+const BASE = process.env.BASE_URL || 'http://localhost:3000';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1280, height: 800 } });
+const p = await ctx.newPage();
+await p.goto(`${BASE}/privacy?nopreload=1`);
+await p.waitForTimeout(1500);
+await p.emulateMedia({ reducedMotion: 'reduce', colorScheme: 'dark' });
+await p.evaluate(() => localStorage.removeItem('clause:theme'));
+await p.reload({ waitUntil: 'load' });
+const r = await new AxeBuilder({ page: p }).withTags(['wcag2aa']).analyze();
+for (const v of r.violations) for (const n of v.nodes) console.log(v.id, n.target.join(' '), n.any[0]?.message?.slice(0, 200), n.html.slice(0, 200));
+console.log('incomplete', r.incomplete.map((i) => `${i.id}:${i.nodes.length}`).join(', '));
+// Tab test mirroring the gate
+const p2 = await (await b.newContext({ viewport: { width: 1280, height: 800 } })).newPage();
+await p2.goto(`${BASE}/?nopreload=1`); await p2.waitForTimeout(2600);
+await p2.getByRole('button', { name: /solutions/i }).first().click();
+await p2.keyboard.press('Escape');
+await p2.evaluate(() => document.activeElement instanceof HTMLElement && document.activeElement.blur());
+await p2.keyboard.press('Tab');
+console.log('first tab:', await p2.evaluate(() => document.activeElement?.textContent?.trim()));
+await b.close();

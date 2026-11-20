@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@layer base {
+  html { scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; }
+  body { background: var(--c-bg); color: var(--c-ink); font-family: var(--f-family-sans); font-size: var(--f-size-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -0.015em; font-weight: 500; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid var(--c-ink); outline-offset: 2px; border-radius: 4px; }
+  [data-theme='dark'] :focus-visible { outline-color: var(--c-accent); }
+  ::selection { background: var(--c-accent); color: var(--c-accent-foreground); }
+}
+
+/* Preloader visibility is decided before paint by the head script (B3). */
+.preloader { display: none; }
+html[data-preload] .preloader { display: grid; }
+
+/* Hero grid */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--c-line) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--c-line) 45%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 30%, black 30%, transparent 75%);
+}
+
+/* Marquee */
+.marquee-mask { mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-dur, 60s) linear infinite; will-change: transform; }
+.marquee-list { display: flex; gap: var(--marquee-gap, 56px); padding-right: var(--marquee-gap, 56px); }
+@keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
+.marquee-wrap:hover .marquee-track,
+.marquee-wrap:focus-within .marquee-track,
+.marquee-wrap[data-paused='true'] .marquee-track { animation-play-state: paused; }
+.marquee-list:has(.app-tile:hover) .app-tile:not(:hover) { opacity: 0.7; }
+
+/* Button sheen */
+.btn-sheen { position: relative; overflow: hidden; }
+.btn-sheen::after { content: ''; position: absolute; inset-block: 0; width: 40px; left: 0; transform: translateX(-120%) skewX(-20deg); background: linear-gradient(90deg, transparent, color-mix(in oklab, white 25%, transparent), transparent); }
+.btn-sheen:hover::after { transform: translateX(520%) skewX(-20deg); transition: transform 600ms var(--ease-out-expo); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .marquee-track { animation: none; }
+  .marquee-wrap { overflow-x: auto; }
+  /* Server-rendered reveal start states never show for reduced-motion users (no mid-fade flash). */
+  [style*="opacity:0;"], [style$="opacity:0"] { opacity: 1 !important; transform: none !important; }
+  [style*="clip-path:inset(100%"] { clip-path: none !important; }
+}
+
+/* ---- Additions (logged in DECISIONS.md): skip link, utilities and overlay animations ---- */
+@layer base {
+  .skip-link { position: absolute; left: 16px; top: 0; z-index: var(--z-toast); transform: translateY(-200%); border-radius: var(--r-button); background: var(--c-brand); color: var(--c-brand-foreground); padding: 10px 16px; font-weight: 550; }
+  .skip-link:focus-visible { transform: translateY(16px); }
+  main:focus { outline: none; }
+}
+
+/*
+ * Hero load sequence (LCP-critical text) is pure CSS so it never waits for hydration.
+ * While the preloader is showing, html[data-preload] adds 1.75s to every delay (ADR-014).
+ */
+html[data-preload] { --load-base: 1.75s; }
+@keyframes rise { from { opacity: 0; transform: translateY(var(--y, 16px)); } to { opacity: 1; transform: none; } }
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(24px); color: var(--c-muted); }
+  to { opacity: 1; transform: none; color: var(--c-ink); }
+}
+.rise { animation: rise 800ms var(--e-out-expo) both; animation-delay: calc(var(--load-base, 0s) + var(--d, 0s)); }
+.hero-word { animation: word-in 900ms var(--e-out-expo) both; animation-delay: calc(var(--load-base, 0s) + var(--d, 0s)); }
+@media (prefers-reduced-motion: reduce) { .rise, .hero-word { animation: none; } }
+
+/* Dark-panel grid (integrations) */
+.grid-dark {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 80%);
+}
+
+/* Cards */
+.card-lift { transition: transform 260ms var(--e-out-expo), box-shadow 260ms var(--e-out-expo); }
+.card-lift:hover { transform: translateY(-3px); box-shadow: var(--sh-pop); }
+.fade-bottom { mask-image: linear-gradient(to bottom, black 55%, transparent 100%); }
+
+/* Links: underline grows from the left */
+.link-grow { background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size 200ms var(--e-out-expo), color 200ms; }
+.link-grow:hover, .link-grow:focus-visible, [data-state='open'].link-grow { background-size: 100% 1px; }
+
+/* Radix overlays */
+@keyframes nav-in { from { opacity: 0; transform: translateY(6px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes nav-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(6px) scale(0.98); } }
+.nav-panel[data-state='open'] { animation: nav-in 200ms var(--e-out-expo); }
+.nav-panel[data-state='closed'] { animation: nav-out 160ms var(--e-in-out); }
+@keyframes sheet-in { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes sheet-out { from { transform: none; } to { transform: translateX(100%); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+.sheet-panel[data-state='open'] { animation: sheet-in 260ms var(--e-out-expo); }
+.sheet-panel[data-state='closed'] { animation: sheet-out 200ms var(--e-in-out); }
+.sheet-overlay[data-state='open'] { animation: fade-in 260ms; }
+.sheet-overlay[data-state='closed'] { animation: fade-out 200ms; }
+
+/* Without JS, nothing may stay hidden by a reveal. */
+
+/* Scrubbed quote words: drawn from data-word so axe sees only the full-contrast accessible copy. */
+.scrub-word::after { content: attr(data-word); }

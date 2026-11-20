@@ -1,0 +1,11 @@
+node_modules
+.next
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.gate-loops
+DONE
+reference/out/*.mp4
+reference/out/lh*.json
+reference/out/*.png
