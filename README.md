@@ -1,3 +1,3 @@
-# Clause
+## Clause
 
-Initial repository seed. See the implementation commit for the complete marketing site scaffold.
+Marketing website for contract and team management. Full source and documentation are provided in this repository.
