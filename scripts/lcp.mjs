@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 412, height: 823 }, deviceScaleFactor: 1.75 });
+const p = await ctx.newPage();
+const cdp = await ctx.newCDPSession(p);
+await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+await p.addInitScript(() => { window.__lcp = []; new PerformanceObserver((l) => { for (const e of l.getEntries()) window.__lcp.push([Math.round(e.startTime), e.element ? e.element.tagName + '.' + String(e.element.className).slice(0, 40) : 'none', e.size]); }).observe({ type: 'largest-contentful-paint', buffered: true }); });
+await p.goto(process.argv[2] || 'http://localhost:3000/?nopreload=1', { waitUntil: 'load' });
+await p.waitForTimeout(6000);
+console.log(JSON.stringify(await p.evaluate(() => window.__lcp)));
+await b.close();

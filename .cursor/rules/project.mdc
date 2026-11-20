@@ -1,0 +1,12 @@
+---
+description: Clause website — always-on rules
+alwaysApply: true
+---
+- Read PLAN.md, DECISIONS.md, progress.md and feature.json at the start of every session; commit after each feature.
+- Stack: Next.js App Router, TypeScript strict, Tailwind v4 (@theme from tokens.json), motion/react, lenis, shadcn/ui, pnpm. One animation library only (motion).
+- Commands: `pnpm dev | lint | typecheck | build`, `BASE_URL=http://localhost:3000 node scripts/check.mjs`.
+- Tokens: every colour, radius, shadow, duration lives in tokens.json → src/styles/tokens.css. No raw hex/oklch/px in components. Missing value? Add the token first.
+- Copy only from src/content/site.ts. Flag demo items `demo: true`. Never invent stats, names, prices.
+- Motion: transform/opacity/filter/clip-path only. Respect prefers-reduced-motion everywhere. Constants in src/lib/motion.ts.
+- Never edit scripts/check.mjs or /reference; never remove feature.json entries; flip `passes` only with evidence in progress.md.
+- Done = gate exits 0 + Lighthouse lab thresholds + reviewer ≥ 4/5 on every criterion + docs complete.
