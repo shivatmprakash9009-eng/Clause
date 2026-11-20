@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://shivatmprakash9009-eng.github.io/Clause/sitemap.xml
