@@ -52,7 +52,9 @@ export function LeadForm({ variant, turnstileSiteKey }: LeadFormProps) {
   const onValid = async (data: LeadData) => {
     setStatus('sending');
     try {
-      const res = await fetch('/api/lead', {
+      // Static hosting (GitHub Pages) has no /api/lead: point NEXT_PUBLIC_LEAD_ENDPOINT at a form backend.
+      const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT || `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/lead`;
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, variant, turnstileToken: token }),

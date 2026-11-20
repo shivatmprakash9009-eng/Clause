@@ -15,10 +15,17 @@ const csp = [
   "frame-ancestors 'none'",
 ].join('; ');
 
+// GitHub Pages build: `pnpm build:pages` sets PAGES=1 (static export, served under /<repo>).
+const pages = process.env.PAGES === '1';
+const basePath = pages ? process.env.NEXT_PUBLIC_BASE_PATH || '' : '';
+
 const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
-  async headers() {
+  ...(pages ? { output: 'export' as const, trailingSlash: true, images: { unoptimized: true }, basePath, assetPrefix: basePath || undefined } : {}),
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
+  // Static hosts cannot send custom headers; they apply to server deployments only.
+  ...(pages ? {} : { async headers() {
     return [
       {
         source: '/:path*',
@@ -31,6 +38,6 @@ const config: NextConfig = {
         ],
       },
     ];
-  },
+  } }),
 };
 export default config;

@@ -9,6 +9,7 @@
     "predev": "node scripts/build-tokens.mjs",
     "dev": "next dev",
     "prebuild": "node scripts/build-tokens.mjs",
+    "build:pages": "node scripts/build-pages.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",

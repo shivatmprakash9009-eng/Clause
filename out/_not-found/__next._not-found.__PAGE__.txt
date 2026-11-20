@@ -1,0 +1,30 @@
+2:"$Sreact.fragment"
+3:"/Clause/_next/static/chunks/1ffy7zw7nesyy.js"
+4:I[94143,["$3"],"default"]
+5:I[36274,["$3"],"default"]
+a:"/Clause/_next/static/chunks/3-yxxd2aollr4.js"
+b:"/Clause/_next/static/chunks/25br7mat9i20g.js"
+c:"/Clause/_next/static/chunks/2b7xon5k3p8d4.js"
+d:"/Clause/_next/static/chunks/3gdbr3oshkt2b.js"
+e:I[48027,["$a","$b","$c","$d"],""]
+f:I[73718,["$3"],"OutletBoundary"]
+10:"$Sreact.suspense"
+13:"ViewportBoundary"
+14:I[73718,["$3"],"$13"]
+15:"MetadataBoundary"
+16:I[73718,["$3"],"$15"]
+17:I[63266,["$3"],"IconMark"]
+7:X
+7:C
+8:X
+9:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","section",null,{"className":"px-4 pb-24 pt-36 text-center md:pt-44","children":[["$","h1",null,{"className":"text-h2 font-medium leading-[1.15] tracking-[-0.015em] text-ink","children":"This page could not be found"}],["$","p",null,{"className":"mx-auto mb-8 mt-4 max-w-[48ch] text-body-lg text-muted","children":"The link may be out of date. Head back to the start."}],["$","$Le",null,{"href":"/","children":"Back to home","className":"relative inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-button font-[550] transition duration-[260ms] ease-out-expo active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 btn-sheen bg-brand text-brand-foreground shadow-brand hover:-translate-y-px hover:bg-brand-hover h-14 px-7 text-body","ref":null}]]}],null,["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]]}],"p":"$@12","v":null,"s":"$8"}}]]
+1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@6","v":"$7","s":"$8"},"c":"$Q9"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"color-scheme","content":"light dark"}]]}],["$","$L16",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$10",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Page not found — Clause"}],["$","meta","1",{"name":"description","content":"Manage contracts, approvals and your team in one tool. Clause gives legal teams visibility, data-driven insights and fewer compliance surprises."}],["$","meta","2",{"name":"application-name","content":"Clause"}],["$","meta","3",{"name":"robots","content":"noindex"}],["$","meta","4",{"property":"og:title","content":"Page not found — Clause"}],["$","meta","5",{"property":"og:description","content":"Manage contracts, approvals and your team in one tool. Clause gives legal teams visibility, data-driven insights and fewer compliance surprises."}],["$","meta","6",{"property":"og:image","content":"https://shivatmprakash9009-eng.github.io/Clause/opengraph-image?0183859dd3a44b42"}],["$","meta","7",{"property":"og:image:type","content":"image/png"}],["$","meta","8",{"property":"og:image:width","content":"1200"}],["$","meta","9",{"property":"og:image:height","content":"630"}],["$","meta","10",{"property":"og:image:alt","content":"Clause — One tool to manage contracts and your team"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"Page not found — Clause"}],["$","meta","13",{"name":"twitter:description","content":"Manage contracts, approvals and your team in one tool. Clause gives legal teams visibility, data-driven insights and fewer compliance surprises."}],["$","meta","14",{"name":"twitter:image","content":"https://shivatmprakash9009-eng.github.io/Clause/opengraph-image?0183859dd3a44b42"}],["$","meta","15",{"name":"twitter:image:alt","content":"Clause — One tool to manage contracts and your team"}],["$","meta","16",{"name":"twitter:image:type","content":"image/png"}],["$","meta","17",{"name":"twitter:image:width","content":"1200"}],["$","meta","18",{"name":"twitter:image:height","content":"630"}],["$","link","19",{"rel":"icon","href":"/Clause/icon.svg?icon.0b0j6le4q8zmr.svg","sizes":"any","type":"image/svg+xml"}],["$","$L17","20",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@18","v":null,"s":"$8"}},"a":"$@19","u":"$@1a","b":"Jhb4B8jPLdbFtMlz2CQ3L"}
+11:null
+1a:true
+8:300
+8:C
+19:0
+6:"$undefined"
+18:"$undefined"
+12:"$undefined"

@@ -67,3 +67,9 @@ Governance: `PLAN.md`, `DECISIONS.md`, `progress.md`, `feature.json`, `CHANGELOG
 ## Licences
 
 Aspekta is SIL OFL 1.1 (`public/fonts/LICENSE.txt`). Third-party brand marks are trademarks of their owners and appear only as flagged placeholders. See `docs/15-glossary-licences.md`.
+
+## GitHub Pages
+
+Pages serves static files only, so the site is exported statically (`pnpm build:pages` → `out/`, base path `/Clause`) and published to the `gh-pages` branch. In repo **Settings → Pages**, set *Source: Deploy from a branch → `gh-pages` / `(root)`*.
+
+Limits of the static build: no `/api/lead` (set `NEXT_PUBLIC_LEAD_ENDPOINT` to a form backend at build time, otherwise forms show the failure message), and the security headers in `next.config.ts` do not apply (static hosts cannot set them). Full server features need a Node host such as Vercel.
