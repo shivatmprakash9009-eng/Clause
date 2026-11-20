@@ -9,3 +9,4 @@ DONE
 reference/out/*.mp4
 reference/out/lh*.json
 reference/out/*.png
+out

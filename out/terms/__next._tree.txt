@@ -1,7 +1,0 @@
-:HL["/Clause/_next/static/chunks/1sqge_c18af5a.css","style"]
-:HL["/Clause/_next/static/media/Aspekta_400-s.p.17pld8cozx8oi.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/Clause/_next/static/media/Aspekta_500-s.p.0s57ejcnxtnhw.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/Clause/_next/static/media/Aspekta_550-s.p.2vwgz43f71n2a.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-2:[["children",{"s":"__PAGE__","h":160}]]
-1:[["children",{"s":"terms","h":64,"c":"$Q2"}]]
-0:{"b":"Jhb4B8jPLdbFtMlz2CQ3L","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
